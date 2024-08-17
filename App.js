@@ -15,8 +15,10 @@ export default function App() {
     ]);
   }
 
-  function deletGoalHandler() {
-    console.log('DELETE');
+  function deletGoalHandler(id) {
+    setCourseGoals(currentCourseGoals => {
+        return  currentCourseGoals.filter((goal) => goal.id != id);
+    });
   }
 
   return (
@@ -28,7 +30,10 @@ export default function App() {
       <FlatList data={courseGoals} 
                 renderItem={(itemData) =>  {
 
-                  return <GoalItem text ={itemData.item.text} onDeleteItem={deletGoalHandler}/>;
+                  return <GoalItem 
+                  text ={itemData.item.text}
+                  id = {itemData.item.id} 
+                  onDeleteItem={deletGoalHandler}/>;
                  } }
                  keyExtractor={(item, index) =>  {
                   return item.id;
