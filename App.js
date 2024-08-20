@@ -7,8 +7,6 @@ import GoalInput from './components/GoalInput';
 export default function App() {
   const [courseGoals, setCourseGoals]= useState([]);
   
-  
-
   function addGoalHandler(entertedGoalText) {
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals, {text: entertedGoalText, id:Math.random().toString() }
@@ -23,11 +21,9 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      
       <GoalInput onAddGoal={addGoalHandler}/>
-
-      <View style={styles.goalContainer}>
-      <FlatList data={courseGoals} 
+           <View style={styles.goalContainer}>
+             <FlatList data={courseGoals} 
                 renderItem={(itemData) =>  {
 
                   return <GoalItem 
@@ -39,7 +35,7 @@ export default function App() {
                   return item.id;
                  }} 
                  alwaysBounceVertical={false}
-      />
+              />
           </View>
     </View>
   );
